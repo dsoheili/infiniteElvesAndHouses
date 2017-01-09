@@ -3,10 +3,10 @@
 
 from sympy.ntheory import isprime
 
-def findNumberOfVisits(houseNum, primeVal):
+def findNumberOfVisits(houseNum, elfNum):
     count = 0
     currentHouseNum = houseNum
-    while ((currentHouseNum % primeVal == 0) and (currentHouseNum != primeVal)):
+    while ((currentHouseNum % elfNum == 0) and (currentHouseNum != elfNum)):
         currentHouseNum = currentHouseNum / 2
         count += 1
     # Since this function counts the additional times an elf visits, subtract 1.
@@ -48,15 +48,15 @@ else:
                 houseNum += 1
         else:
             # Find which primes houseNum is divisible by and update total
-            primeVal = 2
+            elfNum = 2
             totalGifts += (houseNum * 10)
-            while (primeVal <= houseNum):
-                if (houseNum % primeVal == 0):
-                    numberOfVisits= findNumberOfVisits(houseNum, primeVal)
-                    totalGifts += primeVal * 10 * numberOfVisits
-                    primeVal += 1
+            while (elfNum <= houseNum):
+                if (houseNum % elfNum == 0):
+                    numberOfVisits= findNumberOfVisits(houseNum, elfNum)
+                    totalGifts += elfNum * 10 * numberOfVisits
+                    elfNum += 1
                 else:
-                    primeVal += 1
+                    elfNum += 1
             if (givenGifts <= totalGifts):
                 loop = False
                 printDetails(houseNum, givenGifts, totalGifts)
